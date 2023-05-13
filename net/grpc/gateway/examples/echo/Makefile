@@ -58,3 +58,11 @@ clean:
 	rm -f compiled.js
 	rm -f *_pb.js
 	rm -rf $(OUT_DIR)
+
+
+# brew install protoc-gen-grpc-web protoc@3
+# brew link --overwrite protobuf@3
+proto-echo:
+	$(PROTOC) -I=. echo.proto \
+	--js_out=import_style=commonjs:./commonjs-example/ \
+	--grpc-web_out=import_style=commonjs,mode=grpcwebtext:./commonjs-example/

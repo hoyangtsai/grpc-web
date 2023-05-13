@@ -5,6 +5,7 @@ services:
       context: ./
       dockerfile: ./net/grpc/gateway/docker/prereqs/Dockerfile
     image: grpcweb/prereqs
+    platform: linux/amd64
   echo-server:
     build:
       context: ./
@@ -23,6 +24,7 @@ services:
     image: grpcweb/node-server
     ports:
       - "9090:9090"
+    platform: linux/amd64
   node-interop-server:
     build:
       context: ./
@@ -39,6 +41,7 @@ services:
       - "8080:8080"
     links:
       - node-server
+    platform: linux/amd64
   grpcwebproxy:
     build:
       context: ./
@@ -48,6 +51,7 @@ services:
       - "8080:8080"
     links:
       - node-server
+    platform: linux/amd64
   commonjs-client:
     build:
       context: ./
@@ -57,6 +61,7 @@ services:
     image: grpcweb/commonjs-client
     ports:
       - "8081:8081"
+    platform: linux/amd64
   closure-client:
     build:
       context: ./
